@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block titulo %}<title>Listado de objetis</title>{% endblock titulo %}
+
+{% block subtitulo %} <h1>Alta listaAlta lista</h1>{% endblock subtitulo %}
+ 
+{% comment %} {% block creacion_animal %} <h1>Crea un animalito con el formulario</h1> {% endblock creacion_animal %} {% endcomment %}
+
+{% block formulario %}
+<p>
+    <a href={% url 'crear-animal' %}> Crear un animal</a>
+
+</p>
+
+<p>
+    <form action= {% url 'listado_completo' %} method="GET">
+        {{form}}
+        <button>Buscar</button>
+    </form>
+</p>
+
+<p>
+    {% if lista_animales %}
+    <ul>
+        {% for animal in lista_animales %}
+        <li>{{animal}}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    No se encuentra
+    {% endif %}
+      
+
+</p>
+{% endblock formulario %}

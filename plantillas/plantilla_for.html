@@ -1,18 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    esos son mis animales
+
+{% extends 'index.html' %}
+
+{% block titulo %}<title>Pagina de listas</title>{% endblock titulo %}
+
+{% block subtitulo %}Esos son mis animales{% endblock subtitulo %}
+ 
+
+
+{% block creacion_animal %} <h1>Crea un animalito con el formulario</h1> {% endblock creacion_animal %}
+
+
+{% block formulario %}
+<p>
+    <form action={% url 'crear-animal' %} method="POST">
+        {% csrf_token %}
+        <table>
+            {{form}}
+        </table>
+        <input type="submit" value="Crear">
+        {% comment %} <button>crear</button> {% endcomment %}
+
+
+    </form>
+</p>
+
+
+{% endblock formulario %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} <p> 
+    <ul>
+        {% for animal in lista_animal %} 
     
-    {% for animal in lista_animal %} 
+        <li>{{animal.nombre}}</li>
     
-    <li>{{animal.nombre}}</li>
-    
-    {% endfor %}
-</body>
-</html>
+        {% endfor %}
+    </ul>
+</p>    {% endcomment %}
